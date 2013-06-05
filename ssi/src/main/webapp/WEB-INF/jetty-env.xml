@@ -1,0 +1,38 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+
+	<New id="jndi" class="org.eclipse.jetty.plus.jndi.EnvEntry">
+		<Arg></Arg>
+		<Arg>name</Arg>
+		<Arg type="java.lang.Integer">4000</Arg>
+		<Arg type="boolean">true</Arg>
+
+		<Call name="bindToENC">
+			<Arg>name</Arg>
+		</Call>
+	</New>
+
+	<New id="default" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg></Arg>
+		<Arg>default</Arg>
+		<Arg>
+			<New class="com.jolbox.bonecp.BoneCPDataSource">
+				<Set name="driverClass">org.hsqldb.jdbcDriver</Set>
+				<Set name="jdbcUrl">jdbc:hsqldb:file:db/test</Set>
+				<Set name="username">sa</Set>
+				<Set name="password"></Set>
+				<Set name="minConnectionsPerPartition">5</Set>
+				<Set name="maxConnectionsPerPartition">50</Set>
+				<Set name="acquireIncrement">5</Set>
+				<Set name="idleConnectionTestPeriodInMinutes">30</Set>
+			</New>
+		</Arg>
+
+		<Call name="bindToENC">
+			<Arg>default</Arg>
+		</Call>
+	</New>
+
+</Configure>

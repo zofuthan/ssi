@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="enrty.PersonMapper">
+
+	<select id="selectPerson" parameterType="int" resultType="me.entry.Person">
+		SELECT * FROM PERSON WHERE id = #{id}
+	</select>
+	
+	<insert id="insertPerson" parameterType="me.entry.Person">
+		INSERT INTO PERSON VALUES (#{id}, #{name}, #{age})
+	</insert>
+	
+	<select id="deletePerson" parameterType="int">
+		DELETE FROM PERSON WHERE ID = #{id}
+	</select>
+
+</mapper>

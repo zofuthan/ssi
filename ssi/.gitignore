@@ -1,0 +1,7 @@
+/target
+/test-output
+/workspace
+/.externalToolBuilders
+/.settings
+/.classpath
+/.project
